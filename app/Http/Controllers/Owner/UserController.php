@@ -46,7 +46,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'role'=> 'required',
             ]);
-        $data['user']=User::create([
+        $data['users']=User::create([
             'roles_id' => $request['role'],
             'name' => $request['name'],
             'alamat' => $request['alamat'],
@@ -92,17 +92,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data['users']=User::where('id',$request['id'])
-        ->update([
-            'roles_id' => $request['role'],
-            'name' => $request['name'],
-            'alamat' => $request['alamat'],
-            'no_hp' => $request['no_hp'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-        ]);
-        dd($data['users']);
-        return redirect('user');
+        // $data['users']=User::where('id',$request['id'])
+        // ->update([
+        //     'roles_id' => $request['role'],
+        //     'name' => $request['name'],
+        //     'alamat' => $request['alamat'],
+        //     'no_hp' => $request['no_hp'],
+        //     'email' => $request['email'],
+        //     'password' => bcrypt($request['password']),
+        // ]);
+        // dd($data['users']);
+        // return redirect('user');
+
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->update();
+
+       return redirect('user');
     }
 
     /**
