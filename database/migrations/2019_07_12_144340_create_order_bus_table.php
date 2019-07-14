@@ -17,7 +17,8 @@ class CreateOrderBusTable extends Migration
             $table->increments('id');
             $table->string('nama_pemesan');
             $table->string('tujuan');
-            $table->string('penjemputan'); 
+            $table->string('penjemputan');
+            $table->string('keterangan_lokasi'); 
             $table->string('waktu_keberangkatan');
             $table->date('tgl_berangkat'); 
             $table->date('tgl_kembali');

@@ -82,7 +82,7 @@
                             <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Pariwisata <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="ui.html">Sewa Bus Pariwisata</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('order_bus')}}">Sewa Bus Pariwisata</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paket Wisata</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Laporan</a></li>
                                 </ul>

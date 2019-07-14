@@ -54,6 +54,7 @@ Route::group(['middleware'=>'auth'],function(){
     "user"=>"Owner\UserController",
     "jurusan"=>"Owner\JurusanController",
     "kota"=>"Owner\KotaController",
+    "order_bus"=>"Owner\OrderBusController",
 
     ]);
   });
