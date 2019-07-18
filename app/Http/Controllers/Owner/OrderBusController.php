@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\OrderBus;
 
 class OrderBusController extends Controller
 {
@@ -14,7 +15,7 @@ class OrderBusController extends Controller
      */
     public function index()
     {
-        //
+        return view('owner/order_bus.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class OrderBusController extends Controller
      */
     public function create()
     {
-        //
+        return view('owner/order_bus.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class OrderBusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $courseslist = new CoursesList;
+        $courseslist->fill($request->all());
+        $courseslist->save();   
+
+         return redirect()-> route('owner/order_bus.index');
+
     }
 
     /**
