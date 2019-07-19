@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\OrderBus;
+use App\OrderTour;
 
-class OrderBusController extends Controller
+class OrderTourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class OrderBusController extends Controller
      */
     public function index()
     {
-        $data['order_bus'] = OrderBus::get();
-        return view('owner/order_bus.index', $data);
+        //
+        $data['order_tour'] = OrderTour::get();
+        return view('owner/order_tour.index', $data);
     }
 
     /**
@@ -26,8 +27,9 @@ class OrderBusController extends Controller
      */
     public function create()
     {
-        $data = OrderBus::get();
-        return view('owner/order_bus.create', $data);
+        //
+        $data = OrderTour::get();
+        return view('owner/order_tour.create', $data);
     }
 
     /**
@@ -38,13 +40,13 @@ class OrderBusController extends Controller
      */
     public function store(Request $request)
     {
+        //
         // dd($request);
-        $orderbus = new OrderBus;
-        $orderbus->fill($request->All());
-        $orderbus->Save();   
+        $ordertour = new OrderTour;
+        $ordertour->fill($request->All());
+        $ordertour->Save();   
 
-         return redirect('orderbus');
-
+         return redirect('ordertour');
     }
 
     /**
@@ -67,10 +69,9 @@ class OrderBusController extends Controller
     public function edit($id)
     {
         //
-        $data['order_bus'] = OrderBus::find($id);
+        $data['order_tour'] = OrderTour::find($id);
         
-        // dd($data['user']);
-        return view('owner/order_bus.edit',$data);
+        return view('owner/order_tour.edit',$data);
     }
 
     /**
@@ -83,11 +84,11 @@ class OrderBusController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = OrderBus::find($id);
+        $user = OrderTour::find($id);
         $user->fill($request->all());
         $user->update();
 
-       return redirect('orderbus');
+       return redirect('ordertour');
     }
 
     /**
@@ -99,7 +100,7 @@ class OrderBusController extends Controller
     public function destroy($id)
     {
         //
-        $data = OrderBus::find($id)->delete();
+        $data = OrderTour::find($id)->delete();
         return response()->json($data);
     }
 }

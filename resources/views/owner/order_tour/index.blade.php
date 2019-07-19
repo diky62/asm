@@ -2,11 +2,11 @@
 @section('content')
 <section>
 	<div class="container">
-		<a href="{{ route('orderbus.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Tambah Pesanan</button></a><hr>
+		<a href="{{ route('ordertour.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Tambah Pesanan</button></a><hr>
 
 		<div class="panel panel-default">
 		<div class="panel-heading">
-			Form Order Bus
+			Paket Wisata
 		</div>
 		{{-- end heading --}}
 	
@@ -17,15 +17,16 @@
 					<thead>
 						<tr>
 							<th>No.</th>
-							<th>Nama Peminjam</th>
-							<th>Tanggal Keberangkatan</th>
+							<th>Nama Pemesan</th>
 							<th>Tujuan</th>
+							<th>Keterangan Tujuan</th>
 							<th>Lokasi Penjemputan</th>
-							<th>Keterangan Lokasi</th>
 							<th>Jam Keberangkatan</th>
 							<th>Tanggal Keberangkatan</th>
 							<th>Tanggal Kembali</th>
+                            <th>Jumlah Peserta</th>
 							<th>Jumlah Bus</th>
+                            <th>Keterangan  Bus</th>
 							<th>Keterangan</th>
 							<th>Harga</th>
 							<th>Total</th>
@@ -33,24 +34,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($order_bus as $o => $orderbus)
+                    @foreach($order_tour as $or => $ordertour)
 						<tr>
-							<td>{{$o+1}}</td>
-							<td>{{$orderbus->nama_pemesan}}</td>
-							<td>{{$orderbus->tgl_berangkat}}</td>
-							<td>{{$orderbus->tujuan}}</td>
-							<td>{{$orderbus->penjemputan}}</td>
-							<td>{{$orderbus->keterangan_lokasi}}</td>
-							<td>{{$orderbus->waktu_keberangkatan}}</td>
-							<td>{{$orderbus->tgl_berangkat}}</td>
-							<td>{{$orderbus->tgl_kembali}}</td>
-							<td>{{$orderbus->jumlah}}</td>
-							<td>{{$orderbus->keterangan}}</td>
-							<td>{{$orderbus->harga}}</td>
-							<td>{{$orderbus->total}}</td>
+							<td>{{$or+1}}</td>
+							<td>{{$ordertour->nama_pemesan}}</td>
+							<td>{{$ordertour->tujuan}}</td>
+							<td>{{$ordertour->ket_tujuan}}</td>
+							<td>{{$ordertour->penjemputan}}</td>
+							<td>{{$ordertour->waktu_keberangkatan}}</td>
+							<td>{{$ordertour->tgl_berangkat}}</td>
+							<td>{{$ordertour->tgl_kembali}}</td>
+							<td>{{$ordertour->jml_peserta}}</td>
+                            <td>{{$ordertour->jml_bus}}</td>
+                            <td>{{$ordertour->ket_bus}}</td>
+							<td>{{$ordertour->keterangan}}</td>
+							<td>{{$ordertour->harga}}</td>
+							<td>{{$ordertour->total}}</td>
 							<td>
-							<button type="button" class="btn btn-danger" onclick="destroy({{$orderbus->id}})"><i class="fa fa-trash-o"></i>DELETE</button>
-								<a href="{{route('orderbus.edit', $orderbus->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
+							<button type="button" class="btn btn-danger" onclick="destroy({{$ordertour->id}})"><i class="fa fa-trash-o"></i>DELETE</button>
+								<a href="{{route('ordertour.edit', $ordertour->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
 							</td>
 						</tr>
 						@endforeach
@@ -93,14 +95,14 @@ const destroy = (id)=>{
                     _token:"{{ csrf_token() }}"
                 }
 
-                $.post("{{ url('orderbus') }}/"+id,access)
+                $.post("{{ url('ordertour') }}/"+id,access)
                 .done(res=>{
                     swal({
                         title:"Ok!",
                         text:"Data berhasil dihaps!",
                         type:"success"
                     }).then(result=>{
-                        window.location = "{{ url('orderbus') }}";
+                        window.location = "{{ url('ordertour') }}";
                     });
                 })
                 .fail(err=>{
