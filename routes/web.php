@@ -56,8 +56,11 @@ Route::group(['middleware'=>'auth'],function(){
     "kota"=>"Owner\KotaController",
     "orderbus"=>"Owner\OrderBusController",
     "ordertour"=>"Owner\OrderTourController",
+    "laporan_shuttle"=>"Owner\LaporanShuttleController",
+
 
     ]);
+  Route::post('laporan_shuttle/show','Owner\LaporanShuttleController@show')->name('laporan_shuttle.show');
   });
 
 // Route::group(['middleware'=>'role:3'],function(){

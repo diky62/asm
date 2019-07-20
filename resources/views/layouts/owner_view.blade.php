@@ -75,7 +75,7 @@
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('order_shuttle')}}">Tiket BUS</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('jurusan')}}" >Jurusan</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('kota')}}" >Kota</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Laporan</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('laporan_shuttle')}}">Laporan</a></li>
                                 </ul>
                             </li>
 

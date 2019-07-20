@@ -15,7 +15,7 @@ class OrderBusController extends Controller
      */
     public function index()
     {
-        $data['order_bus'] = OrderBus::get();
+        $data['order_bus'] = OrderBus::orderBy('created_at','desc')->get();
         return view('owner/order_bus.index', $data);
     }
 
