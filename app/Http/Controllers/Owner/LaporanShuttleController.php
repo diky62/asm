@@ -45,13 +45,13 @@ class LaporanShuttleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         $a = $request['tgl_awal'];
         $b = $request['tgl_akhir'];
         // dd($a);
           $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();
-         dd($data);
+        //  dd($data);
          return view('owner/laporan_shuttle.show', $data);
     }
 

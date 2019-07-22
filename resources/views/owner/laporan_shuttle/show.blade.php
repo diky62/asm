@@ -41,13 +41,7 @@
 							<td>{{$order_shuttle->diskon}}</td>
 							<td>{{$order_shuttle->total}}</td>
 							<td>
-								<button type="button" class="btn btn-danger" onclick="destroy({{$order_shuttle->id}})"><i class="fa fa-trash"></i> Delete</button>
-
-								<form id="delete{{$order_shuttle->id}}" action="{{ route('order_shuttle.destroy',$order_shuttle->id) }}" method="post">
-									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="id" value="{{$order_shuttle->id}}">
-									<input type="hidden" name="_token" value="{{csrf_token()}}">
-								</form>
+								
 							</td>
 						</tr>
 						@endforeach
