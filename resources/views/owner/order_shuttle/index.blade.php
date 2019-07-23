@@ -37,7 +37,7 @@
 							<td>{{$order_shuttle->alamat}}</td>
 							<td>{{$order_shuttle->jurusan->jurusan}}</td>
 							<td>{{$order_shuttle->tgl_berangkat}}</td>
-							<td>{{$order_shuttle->harga}}</td>
+							<td>{{$order_shuttle->Harga}}</td>
 							<td>{{$order_shuttle->diskon}}</td>
 							<td>{{$order_shuttle->total}}</td>
 							<td>
@@ -48,6 +48,8 @@
 									<input type="hidden" name="id" value="{{$order_shuttle->id}}">
 									<input type="hidden" name="_token" value="{{csrf_token()}}">
 								</form>
+								<a href="{{route('order_shuttle.edit', $order_shuttle->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
+								<a href="{{route('order_shuttle.cetak', $order_shuttle->id)}}" type="button" class="btn btn-info"><i class="fa fa-edit"></i>CETAK</a>
 							</td>
 						</tr>
 						@endforeach

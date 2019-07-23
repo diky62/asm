@@ -73,6 +73,14 @@ class OrderBusController extends Controller
         return view('owner/order_bus.edit',$data);
     }
 
+    public function cetak($id)
+    {
+        //
+        $data['order_bus'] = OrderBus::find($id);
+        
+        // dd($data['user']);
+        return view('owner/order_bus.cetak',$data);
+    }
     /**
      * Update the specified resource in storage.
      *

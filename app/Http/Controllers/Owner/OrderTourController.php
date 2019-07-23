@@ -74,6 +74,13 @@ class OrderTourController extends Controller
         return view('owner/order_tour.edit',$data);
     }
 
+    public function cetak($id)
+    {
+        //
+        $data['order_tour'] = OrderTour::find($id);
+        
+        return view('owner/order_tour.cetak',$data);
+    }
     /**
      * Update the specified resource in storage.
      *

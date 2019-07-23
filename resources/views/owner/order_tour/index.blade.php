@@ -53,6 +53,7 @@
 							<td>
 							<button type="button" class="btn btn-danger" onclick="destroy({{$ordertour->id}})"><i class="fa fa-trash-o"></i>DELETE</button>
 								<a href="{{route('ordertour.edit', $ordertour->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
+								<a href="{{route('ordertour.cetak', $ordertour->id)}}" type="button" class="btn btn-info"><i class="fa fa-edit"></i>CETAK</a>
 							</td>
 						</tr>
 						@endforeach

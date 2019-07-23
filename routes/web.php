@@ -60,6 +60,9 @@ Route::group(['middleware'=>'auth'],function(){
 
 
     ]);
+    Route::get('/ordertour/cetak/{id}','Owner\OrderTourController@cetak')->name('ordertour.cetak');
+    Route::get('/orderbus/cetak/{id}','Owner\OrderBusController@cetak')->name('orderbus.cetak');
+    Route::get('/order_shuttle/cetak/{id}','Owner\OrderShuttleController@cetak')->name('order_shuttle.cetak');
   Route::post('laporan_shuttle/show','Owner\LaporanShuttleController@show')->name('laporan_shuttle.show');
   });
 

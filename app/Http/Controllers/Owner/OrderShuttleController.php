@@ -41,6 +41,7 @@ class OrderShuttleController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $data['order_shuttle']=OrderShuttle::create([
             'jurusan_id' => $request['jurusan'],
             'nama' => $request['nama'],
@@ -76,6 +77,23 @@ class OrderShuttleController extends Controller
     public function edit($id)
     {
         //
+        $data['order_shuttle'] = OrderShuttle::find($id);
+        $data['jurusans'] = Jurusan::get();
+        
+        // dd($data['user']);
+        // return view('owner/user.edit',$data);
+        return view('owner/order_shuttle.edit',$data);
+    }
+
+    public function cetak($id)
+    {
+        //
+        $data['order_shuttle'] = OrderShuttle::find($id);
+        $data['jurusans'] = Jurusan::get();
+        
+        // dd($data['user']);
+        // return view('owner/user.edit',$data);
+        return view('owner/order_shuttle.cetak',$data);
     }
 
     /**
@@ -88,6 +106,11 @@ class OrderShuttleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = OrderShuttle::find($id);
+        $user->fill($request->all());
+        $user->update();
+
+       return redirect('order_shuttle');
     }
 
     /**
