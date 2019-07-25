@@ -49,9 +49,10 @@
 							<td>{{$orderbus->harga}}</td>
 							<td>{{$orderbus->total}}</td>
 							<td>
-							<button type="button" class="btn btn-danger" onclick="destroy({{$orderbus->id}})"><i class="fa fa-trash-o"></i>DELETE</button>
-								<a href="{{route('orderbus.edit', $orderbus->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
-								<a href="{{route('orderbus.cetak', $orderbus->id)}}" type="button" class="btn btn-info"><i class="fa fa-edit"></i>CETAK</a>
+							<button type="button" class="btn btn-danger" onclick="destroy({{$orderbus->id}})"><i class="fa fa-trash"></i> DELETE</button>
+								<a href="{{route('orderbus.edit', $orderbus->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i> EDIT</a>
+								<a href="{{route('orderbus.cetak', $orderbus->id)}}" type="button" class="btn btn-info"><i class="fa fa-print"></i> CETAK</a>
+								<a href="{{ route('pembayaran_bus',$orderbus->id) }}" type="button" class="btn btn-success"><i class="fa fa-edit"></i> PEMBAYARAN</a>
 
 							</td>
 						</tr>

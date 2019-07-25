@@ -139,6 +139,10 @@
     <script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
     <script src="{{asset('fullcalendar/fullcalendar.min.js')}}"></script>
     <script src="{{asset('fullcalendar/locale/id.js')}}"></script>
+    <!-- Print This -->
+    <script src="{{asset('js/printThis.js')}}" charset="utf-8"></script>
+    <!-- curency -->
+    <script src="{{asset('js/jquery.mask.js')}}"></script>
 {{-- <script>
     $(document).ready(function() {
         // page is now ready, initialize the calendar...

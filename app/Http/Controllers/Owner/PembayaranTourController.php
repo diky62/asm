@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\OrderBus;
-use App\PembayaranBus;
 
-class OrderBusController extends Controller
+class PembayaranTourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class OrderBusController extends Controller
      */
     public function index()
     {
-        $data['order_bus'] = OrderBus::orderBy('created_at','desc')->get();
-        return view('owner/order_bus.index', $data);
+        //
     }
 
     /**
@@ -27,8 +24,7 @@ class OrderBusController extends Controller
      */
     public function create()
     {
-        $data = OrderBus::get();
-        return view('owner/order_bus.create', $data);
+        //
     }
 
     /**
@@ -39,13 +35,7 @@ class OrderBusController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $orderbus = new OrderBus;
-        $orderbus->fill($request->All());
-        $orderbus->Save();   
-
-         return redirect('orderbus');
-
+        //
     }
 
     /**
@@ -68,27 +58,8 @@ class OrderBusController extends Controller
     public function edit($id)
     {
         //
-        $data['order_bus'] = OrderBus::find($id);
-        
-        // dd($data['user']);
-        return view('owner/order_bus.edit',$data);
     }
 
-    public function cetak($id)
-    {
-        //
-        $data['order_bus'] = OrderBus::find($id);
-        
-        // dd($data['user']);
-        return view('owner/order_bus.cetak',$data);
-    }
-
-    // public function pembayaran($order_bus_id)
-    // {
-    //     $data["pembayaran"] = Pembayaran::with('order_bus')
-    //     ->where('order_bus_id',$order_bus_id)->get();
-    //     return view('owner/order_bus.pembayaran',$data);
-    // }
     /**
      * Update the specified resource in storage.
      *
@@ -99,11 +70,6 @@ class OrderBusController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = OrderBus::find($id);
-        $user->fill($request->all());
-        $user->update();
-
-       return redirect('orderbus');
     }
 
     /**
@@ -115,7 +81,5 @@ class OrderBusController extends Controller
     public function destroy($id)
     {
         //
-        $data = OrderBus::find($id)->delete();
-        return response()->json($data);
     }
 }

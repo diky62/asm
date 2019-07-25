@@ -46,7 +46,7 @@
 								</div>
                                 <div class="form-group">
 									<h4><span class="label label-default">Jumlah Peserta : </span></h4>
-									<input type="number" required name="jml_peserta" class="form-control" placeholder="Jumlah Peserta" onkeypress="return hanyaAngka(event)">
+									<input type="number" required name="jml_peserta" id="jml_peserta" class="form-control" placeholder="Jumlah Peserta" onkeypress="return hanyaAngka(event)">
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Jumlah Bus: </span></h4>
@@ -96,7 +96,9 @@
 	      $("#diskon").keyup(function(){
 	        var harga  = parseInt($("#harga").val());
 	        var diskon  = parseInt($("#diskon").val());
-	        var total = harga - (harga*(diskon/100));
+	        var peserta  = parseInt($("#jml_peserta").val());
+	        var subtotal = (harga*peserta) - (harga*(diskon/100));
+	        var total = subtotal - (subtotal*(diskon/100));
 	        $("#total").val(total);
 	      });
 

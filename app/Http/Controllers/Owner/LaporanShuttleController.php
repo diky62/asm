@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\OrderShuttle;
+use PDF;
 
 class LaporanShuttleController extends Controller
 {
@@ -49,9 +50,9 @@ class LaporanShuttleController extends Controller
     {
         $a = $request['tgl_awal'];
         $b = $request['tgl_akhir'];
-        // dd($a);
+        // dd($b);
           $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();
-        //  dd($data);
+         // dd($data);
          return view('owner/laporan_shuttle.show', $data);
     }
 
@@ -88,4 +89,13 @@ class LaporanShuttleController extends Controller
     {
         //
     }
+
+    public function cetak_pdf()
+    {
+        $order_shuttles = OrderShuttle::all();
+ 
+        $pdf = PDF::loadview('cetak',['laporan_shuttle'=>$order_shuttles]);
+        return $pdf->stream();
+    }
+
 }

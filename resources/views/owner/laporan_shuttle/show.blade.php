@@ -6,11 +6,12 @@
 
 		<div class="panel panel-default">
 		<div class="panel-heading">
-			Order Shuttle
+			Laporan
 		</div>
 		{{-- end heading --}}
 	
 		<div class="panel-body">
+			<a href="{{ URL::to('/laporan_shuttle/cetak_pdf') }}"><button type="button" class="btn btn-success"><i class="fa fa-print"></i> Cetak</button></a><hr>
         
 			<div class="table-responsive">
 				<table class="table table-bordered">
@@ -25,7 +26,6 @@
 							<th>Harga</th>
 							<th>Diskon</th>
 							<th>Total</th>
-							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -40,9 +40,7 @@
 							<td>{{$order_shuttle->harga}}</td>
 							<td>{{$order_shuttle->diskon}}</td>
 							<td>{{$order_shuttle->total}}</td>
-							<td>
-								
-							</td>
+
 						</tr>
 						@endforeach
 					</tbody>

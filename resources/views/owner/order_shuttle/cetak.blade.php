@@ -7,79 +7,113 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Form Edit Pemesanan
+			Print Preview Invoice
 		</div>
 		<div class="panel-body">
-			<form class="form" action="{{ route('order_shuttle.update', $order_shuttle->id) }}" method="post" fid="orderForm">
-			@method('put')
-            @csrf
 			<div class="row">
 							<div class="panel-body">
-								<div class="form-group">
-									<h4><span class="label label-default">Nama : </span></h4>
-									<input type="text" value="{{$order_shuttle->nama}}" required name="nama" class="form-control" placeholder="Nama Pemesan" onkeyup="this.value = this.value.toUpperCase()">
-								</div>
-								
-                                <div class="form-group">
-									<h4><span class="label label-default">alamat : </span></h4>
-									<input type="textarea" value="{{$order_shuttle->alamat}}" required name="alamat" class="form-control" placeholder="Tujuan">
-								</div>
+								<div id="printThis">
+									<div class="form-group">
+										<table border="1">
+											<thead>
+												<tr>
+													<td>
+														<img src="{{asset('gambar/kop.png')}}" width="700"/>
+													</td>
+												</tr>
+											</thead>
+										</table>
+									</div>
+									<center style="font-family: Times New Roman">
+										<H4>TIKET BUS</H4>
+									</center>
+									
+									<table border="1">
+										<tr> 
+											<td width="700">
+												<table border="0">
 
-                                <!-- <div class="form-group">
-                                    <label for="role" class="col-md-4 control-label">Role</label>
-                                        <select id="roles_id" class="form-control" name="roles_id">
-                                    @foreach($jurusans as $role)
-                                    <option value="{{ $role->id }}">{{ $role->jurusan }}</option>
-                                    @endforeach
-                                </div> -->
+													<tr>
+														<td width="10"></td>
+														<td> Nama Pemesan </td> <td> : </td><td> {{$order_shuttle->nama}}</td>
+													</tr>
+													<tr>
+														<td width="10"></td>
+														<td> No Identitas </td> <td width="10"> : </td><td>{{$order_shuttle->no_identitas}}</td>
+													</tr>
+													<tr>
+														<td width="10"></td>
+														<td> Alamat </td> <td> : </td><td>{{$order_shuttle->alamat}}</td>
+													</tr>
+													<tr>
+														<td width="10"></td>
+														<td> Jurusan </td> <td> : </td><td>{{$order_shuttle->jurusan->jurusan}}</td>
+													</tr>
+													@php
+														setlocale (LC_TIME, 'id_ID');
+														$date = strftime( "%d %B %Y", strtotime($order_shuttle->tgl_berangkat));
+														$date1 = strftime( " %d %B %Y", time());
+														
+													@endphp
+													<tr>
+														<td width="10"></td>
+														<td width="190"> Tanggal Keberangkatan  </td> <td> : </td><td>{{$date}}</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										
+									</table>
 
-								<div class="form-group">
-									<h4><span class="label label-default">Nomor Identitas : </span></h4>
-									<input type="number" value="{{$order_shuttle->no_identitas}}" required name="no_identitas" class="form-control" placeholder="Penjemputan">
-								</div>
-            
-								<!-- <div class="form-group">
-									<h4><span class="label label-default">Jurusan: </span></h4>
-									<select id="roles_id" class="form-control" name="jurusan_id">
-                                    @foreach($jurusans as $jurusan)
-                                    <option value="{{ $jurusan->id }}">{{ $jurusan->name }}</option>
-                                    @endforeach
-								</div> -->
-                                
-                                <div class="form-group">
-									<h4><span class="label label-default">Jurusan : </span></h4>
-									<select id="roles_id" class="form-control" name="jurusan_id">
-                                    @foreach($jurusans as $role)
-                                    <option value="{{ $role->id }}">{{ $role->jurusan }}</option>
-                                    @endforeach
-                                    </select>
-								</div>
+									<hr>
 
-								<div class="form-group">
-									<h4><span class="label label-default">Tanggal Keberangkatan: </span></h4>
-									<input type="date" value="{{$order_shuttle->tgl_berangkat}}" required name="tgl_berangkat"  id="tgl_berangkat" class="form-control" placeholder="Harga">
-								</div>
+									<table border="1">
+										<tr>
+											<td width="700">
+												<table>
+												<tr>
+													<td width="10">  
+													</td>
+													<td>
+														<table border="1">
+															<thead>
+																<tr>
+																	<td width="250">
+																		
+																		<h1>Rp. {{ number_format($order_shuttle->Harga,0,".",".") }}</h1>
+																		
+																	</td>
+																</tr>
+															</thead>
+														</table> 
+													</td> 
+													<td width="300"></td>
+													<td>
+														<center>
+															<h5>Hormat Kami</h5>
+															<br>
+															
+															<h5>Fitra Autotrans</h5>
+														</center>
+													</td>
 
-								<div class="form-group">
-									<h4><span class="label label-default">Harga: </span></h4>
-									<input type="number" value="{{$order_shuttle->Harga}}" required name="Harga" id="harga" class="form-control" placeholder="Harga" onkeypress="return hanyaAngka(event)">
+												</tr>
+											</table>
+													</td>
+										</tr>
+									</table>
+									
+
+									
 								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Diskon (%) : </span></h4>
-									<input type="number" value="{{$order_shuttle->diskon}}" required name="diskon" id="diskon" class="form-control" placeholder="Diskon" value="0" onkeypress="return hanyaAngka(event)">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Total: </span></h4>
-									<input type="number" name="total" id="total" value="{{$order_shuttle->total}}" class="form-control">
-								</div>
-								
+								<br>
+								{{-- end printthis --}}
+								<button type="submit" class="btn btn-success center-block btn-block" onclick="print_now()" style="border-radius:24px"><i class="fa fa-save"></i> Cetak Tiket</button>
 							</div>
 					
 				{{-- end form --}}
 			</div>
-			
-			<button type="submit" class="btn btn-success center-block btn-block" style="border-radius:24px"><i class="fa fa-save"></i> Cetak Invoice</button>
-			</form>
+
 		</div>
 				
 	</div>
@@ -100,6 +134,13 @@
 	      });
 
 	    });
+
+	    function print_now(){
+			$("#printThis").printThis({
+			importCSS: true,
+            importStyle: true
+			});
+		}
 
 
 
