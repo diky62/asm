@@ -1,4 +1,5 @@
-@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : 'layouts.shuttle_view'))
+@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : (Auth::user()->roles_id == 3 ? 'layouts.pariwisata_view' : 'layouts.pariwisata_view' )))
+ 
 @section('content')
 <section>
 	<div class="container">
@@ -89,7 +90,7 @@
             tujuan:a.tujuan,
             lokasi:a.ket_tujuan,
             jumlah:a.jml_bus,
-            keterangan:a.ket_bus,
+            keterangan:a.keterangan,
 
 
         });

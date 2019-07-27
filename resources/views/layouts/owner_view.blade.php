@@ -74,8 +74,8 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('order_shuttle')}}">Tiket BUS</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('jurusan')}}" >Jurusan</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('kota')}}" >Kota</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('laporan_shuttle')}}">Laporan</a></li>
+                                     <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('kota')}}" >Kota</a></li> -->
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('laporan_shuttle')}}">Data Per Periode</a></li>
                                 </ul>
                             </li>
 
@@ -84,7 +84,7 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('orderbus')}}">Sewa Bus Pariwisata</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('ordertour')}}">Paket Wisata</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Laporan</a></li>
+                                     <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Laporan</a></li> -->
                                 </ul>
                             </li>
                             <li><a href="{{url('user')}}" @yield('user-active')>User</a></li>

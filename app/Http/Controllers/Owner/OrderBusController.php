@@ -83,12 +83,12 @@ class OrderBusController extends Controller
         return view('owner/order_bus.cetak',$data);
     }
 
-    // public function pembayaran($order_bus_id)
-    // {
-    //     $data["pembayaran"] = Pembayaran::with('order_bus')
-    //     ->where('order_bus_id',$order_bus_id)->get();
-    //     return view('owner/order_bus.pembayaran',$data);
-    // }
+    public function pembayaran()
+    {
+        $data["pembayaran"] = Pembayaran::get();
+        dd($data);
+        return view('owner/order_bus.pembayaran');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -117,5 +117,19 @@ class OrderBusController extends Controller
         //
         $data = OrderBus::find($id)->delete();
         return response()->json($data);
+    }
+
+    function pdf()
+    {
+        // $a = $request['tgl_awal'];
+        // $b = $request['tgl_akhir'];
+        
+        // dd($awal);
+        // $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();    
+         $data['order_bus'] = OrderBus::get();
+          // dd($data);
+        $pdf = \PDF::loadView('bus-pdf', $data);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->download('laporan_bus.pdf');   
     }
 }

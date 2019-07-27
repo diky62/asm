@@ -68,9 +68,10 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="{{url('schedule')}}"  @yield('#')>Schedule</a></li>
-                            <li><a href="{{url ('jurusan')}}"  @yield('#')>Asal Tujuan</a></li>
+                            <li><a href="{{url ('jurusan')}}"  @yield('#')>Jurusan</a></li>
                             <li><a href="{{url ('order_shuttle')}}"  @yield('#')>Tiket BUS</a></li>
-                            <li><a href="#"  @yield('#')>Laporan</a></li>
+                            <li><a href="{{url ('laporan_shuttle')}}"  @yield('#')>Data Per Periode</a></li>
+
 
                         </ul>
                     </div>

@@ -53,7 +53,7 @@ class LaporanShuttleController extends Controller
         // dd($b);
           $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();
          // dd($data);
-         return view('owner/laporan_shuttle.show', $data);
+         return view('owner/laporan_shuttle.show', $data, ['a' => $a, 'b'=>$b]);
     }
 
     /**
@@ -90,12 +90,18 @@ class LaporanShuttleController extends Controller
         //
     }
 
-    public function cetak_pdf()
+    function pdf(Request $request)
     {
-        $order_shuttles = OrderShuttle::all();
- 
-        $pdf = PDF::loadview('cetak',['laporan_shuttle'=>$order_shuttles]);
-        return $pdf->stream();
+        // $a = $request['tgl_awal'];
+        // $b = $request['tgl_akhir'];
+        
+        // dd($awal);
+        // $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();    
+        $data['order_shuttles']=OrderShuttle::get();
+          // dd($data);
+        $pdf = \PDF::loadView('pdf', $data);
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->download('laporan_shuttle.pdf');   
     }
 
 }

@@ -110,4 +110,18 @@ class OrderTourController extends Controller
         $data = OrderTour::find($id)->delete();
         return response()->json($data);
     }
+
+    function pdf()
+    {
+        // $a = $request['tgl_awal'];
+        // $b = $request['tgl_akhir'];
+        
+        // dd($awal);
+        // $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();    
+         $data['order_tour'] = OrderTour::get();
+          // dd($data);
+        $pdf = \PDF::loadView('tour-pdf', $data);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->download('laporan_tour.pdf');   
+    }
 }

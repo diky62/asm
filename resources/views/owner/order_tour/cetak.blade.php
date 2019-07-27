@@ -1,4 +1,4 @@
-@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : 'layouts.shuttle_view'))
+@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : (Auth::user()->roles_id == 3 ? 'layouts.pariwisata_view' : 'layouts.pariwisata_view' )))
 @section('content')
 <section>
 	<div class="container-fluid">
@@ -7,81 +7,142 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Form Edit Pemesanan
+			Print Preview Invoice
 		</div>
 		<div class="panel-body">
-			<form class="form" action="{{ route('ordertour.update', $order_tour->id) }}" method="post" fid="orderForm">
-			@method('put')
-            @csrf
 			<div class="row">
-							<div class="panel-body">
-								<div class="form-group">
-									<h4><span class="label label-default">Nama Pemesan: </span></h4>
-									<input type="text" value="{{$order_tour->nama_pemesan}}" required name="nama_pemesan" class="form-control" placeholder="Nama Pemesan" onkeyup="this.value = this.value.toUpperCase()">
-								</div>
-								
-								<div class="form-group">
-									<h4><span class="label label-default">Tujuan : </span></h4>
-									<input type="text" value="{{$order_tour->tujuan}}" required name="tujuan" class="form-control" placeholder="Tujuan">
-								</div>
-                                <div class="form-group">
-									<h4><span class="label label-default">Tujuan : </span></h4>
-									<input type="textarea" value="{{$order_tour->ket_tujuan}}" required name="ket_tujuan" class="form-control" placeholder="Tujuan">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Alamat Penjemputan : </span></h4>
-									<input type="text" value="{{$order_tour->penjemputan}}" required name="penjemputan" class="form-control" placeholder="Penjemputan">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Jam Keberangkatan: </span></h4>
-									<input type="time" value="{{$order_tour->waktu_keberangkatan}}" required name="waktu_keberangkatan" id="waktu_keberangkatan" class="form-control" placeholder="Jam Keberangkatan">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Tanggal Keberangkatan: </span></h4>
-									<input type="date" value="{{$order_tour->tgl_berangkat}}" required name="tgl_berangkat"  id="tgl_berangkat" class="form-control" placeholder="Harga">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Tanggal Kembali: </span></h4>
-									<input type="date" value="{{$order_tour->tgl_kembali}}" required name="tgl_kembali" id="tgl_kembali" class="form-control" placeholder="Harga">
-								</div>
-								
-								<div class="form-group">
-									<h4><span class="label label-default">Jumlah Peserta: </span></h4>
-									<input type="number" value="{{$order_tour->jml_peserta}}" required name="jml_peserta" id="jumlah" class="form-control" placeholder="Jumlah Bus" onkeypress="return hanyaAngka(event)">
-								</div>
-                                <div class="form-group">
-									<h4><span class="label label-default">Jumlah Bus: </span></h4>
-									<input type="number" value="{{$order_tour->jml_bus}}" required name="jml_bus" id="jumlah" class="form-control" placeholder="Jumlah Bus" onkeypress="return hanyaAngka(event)">
-								</div>
-                                <div class="form-group">
-									<h4><span class="label label-default">Keterangan Bus: </span></h4>
-									<input type="textarea" value="{{$order_tour->ket_bus}}" required name="ket_bus" id="keterangan" class="form-control" placeholder="Keterangan">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Keterangan: </span></h4>
-									<input type="textarea" value="{{$order_tour->keterangan}}" required name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan">
-								</div>
+				<div class="panel-body">
+					<div id="printThis">
+						<div class="form-group">
+							<table border="1">
+								<thead>
+									<tr>
+										<td>
+											<img src="{{asset('gambar/kop.png')}}" width="700"/>
+										</td>
+									</tr>
+								</thead>
+							</table>
+						</div>
+						<center style="font-family: Times New Roman">
+							<H4>INVOICE</H4>
+						</center>
+						
+						<table border="1">
+							<tr> 
+								<td width="700">
+									<table border="0">
 
-								<div class="form-group">
-									<h4><span class="label label-default">Harga: </span></h4>
-									<input type="number" value="{{$order_tour->harga}}" required name="harga" id="harga" class="form-control" placeholder="Harga" onkeypress="return hanyaAngka(event)">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Diskon (%) : </span></h4>
-									<input type="number" value="{{$order_tour->diskon}}" required name="diskon" id="diskon" class="form-control" placeholder="Diskon" value="0" onkeypress="return hanyaAngka(event)">
-								</div>
-								<div class="form-group">
-									<h4><span class="label label-default">Total: </span></h4>
-									<input type="number" name="total" id="total" value="{{$order_tour->total}}" class="form-control">
-								</div>
-								
-							</div>
+										<tr>
+											<td width="10"></td>
+											<td> Nama Pemesan </td> <td> : </td><td> {{$order_tour->nama_pemesan}}</td>
+										</tr>
+										<tr>
+											<td width="10"></td>
+											<td> No Hp </td> <td width="10"> : </td><td>{{$order_tour->no_hp}}</td>
+										</tr>
+										<tr>
+											<td width="10"></td>
+											<td> Harga Satuan </td> <td> : </td><td>{{$order_tour->harga}}</td>
+										</tr>
+										<tr>
+											<td width="10"></td>
+											<td> Diskon </td> <td> : </td><td>{{$order_tour->diskon}}</td>
+										</tr>
+										@php
+											setlocale (LC_TIME, 'id_ID');
+											$date = strftime( "%d %B %Y", strtotime($order_tour->tgl_berangkat));
+											$date1 = strftime( " %d %B %Y", time());
+											
+										@endphp
+										<tr>
+											<td width="10"></td>
+											<td> Untuk Pembayaran </td> <td width="10"> : </td><td> Biaya Paket wisata sebanyak {{$order_tour->jml_peserta}} orang, yang akan dibeangkatkan pada tanggal {{$date}} jam {{$order_tour->waktu_keberangkatan}} dari {{$order_tour->penjemputan}} dengan tujuan {{$order_tour->tujuan}}</td>
+										</tr>
+										<!-- <tr>
+											<td width="10"></td>
+											<td> Alamat Penjemputan </td> <td width="10"> : </td><td>{{$order_tour->penjemputan}}</td>
+										</tr>
+										<tr>
+											<td width="10"></td>
+											<td> Tujuan </td> <td> : </td><td>{{$order_tour->tujuan}}</td>
+										</tr>
+										<tr>
+											<td width="10"></td>
+											<td> Jumlah Peserta </td> <td> : </td><td>{{$order_tour->jml_peserta}}</td>
+										</tr> -->
+										
+										
+										<!-- <tr>
+											<td width="10"></td>
+											<td width="190"> Tanggal Keberangkatan  </td> <td> : </td><td>{{$date}}</td>
+										</tr>
+										<tr>
+											<td width="10"></td>
+											<td> Jam Keberangkatan </td> <td> : </td><td>{{$order_tour->waktu_keberangkatan}}</td>
+										</tr> -->
+									</table>
+								</td>
+							</tr>
+							
+						</table><br>
+						<table border="1">
+							<tr>
+								<td width="700">
+									<table>
+									<tr>
+										<td width="10">  
+										</td>
+										<td>
+											<table border="1">
+												<thead>
+													<tr>
+														<td width="250">
+															
+															<h3>Rp. {{ number_format($order_tour->total,0,".",".") }}</h3>
+															
+														</td>
+													</tr>
+												</thead>
+											</table> 
+										</td> 
+										<td width="70"></td>
+										<td>
+											<center>
+												<h5>Pemesan</h5>
+												<br>
+												
+												<h5>( {{$order_tour->nama_pemesan}} )</h5>
+											</center>
+										</td>
+										<td width="10"></td>
+										<td>
+											<center>
+												<h5>Hormat Kami</h5>
+												<br>
+												
+												<h5>( Fitra Autotrans ) </h5>
+											</center>
+										</td>
+
+									</tr>
+								</table>
+										</td>
+							</tr>
+						</table>
+						
+						
+
+						
+					</div>
+					<br>
+					{{-- end printthis --}}
+					<button type="submit" class="btn btn-success center-block btn-block" onclick="print_now()" style="border-radius:24px"><i class="fa fa-save"></i> Cetak Tiket</button>
+				</div>
 					
 				{{-- end form --}}
 			</div>
-			
-			<button type="submit" class="btn btn-success center-block btn-block" style="border-radius:24px"><i class="fa fa-save"></i> Cetak Invoice</button>
-			</form>
+
 		</div>
 				
 	</div>
@@ -102,6 +163,13 @@
 	      });
 
 	    });
+
+	    function print_now(){
+			$("#printThis").printThis({
+			importCSS: true,
+            importStyle: true
+			});
+		}
 
 
 

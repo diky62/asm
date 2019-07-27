@@ -1,8 +1,9 @@
-@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : 'layouts.shuttle_view'))
+@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : (Auth::user()->roles_id == 3 ? 'layouts.pariwisata_view' : 'layouts.pariwisata_view' )))
 @section('content')
 <section>
 	<div class="container">
-		<a href="{{ route('orderbus.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Tambah Pesanan</button></a><hr>
+		<a href="{{ route('orderbus.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Tambah Pesanan</button></a>
+		<a href="{{ route('orderbus.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
 
 		<div class="panel panel-default">
 		<div class="panel-heading">
@@ -52,7 +53,7 @@
 							<button type="button" class="btn btn-danger" onclick="destroy({{$orderbus->id}})"><i class="fa fa-trash"></i> DELETE</button>
 								<a href="{{route('orderbus.edit', $orderbus->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i> EDIT</a>
 								<a href="{{route('orderbus.cetak', $orderbus->id)}}" type="button" class="btn btn-info"><i class="fa fa-print"></i> CETAK</a>
-								<a href="{{ route('pembayaran_bus',$orderbus->id) }}" type="button" class="btn btn-success"><i class="fa fa-edit"></i> PEMBAYARAN</a>
+								<a href="{{ route('orderbus.pembayaran') }}" type="button" class="btn btn-success"><i class="fa fa-edit"></i> PEMBAYARAN</a>
 
 							</td>
 						</tr>

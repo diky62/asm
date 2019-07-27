@@ -14,11 +14,11 @@ class PembayaranBusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($order_bus_id)
+    public function index()
     {
-        $data["pembayaran"] = Pembayaran::with('order_bus')
-        ->where('order_bus_id',$order_bus_id)->get();
-        return view('owner/order_bus.pembayaran',$data);
+        // $data["pembayaran"] = Pembayaran::with('order_bus')
+        // ->where('order_bus_id',$order_bus_id)->get();
+        return view('owner/pembayaran_bus.index');
     }
 
     /**

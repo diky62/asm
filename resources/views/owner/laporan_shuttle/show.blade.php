@@ -1,4 +1,4 @@
-@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : 'layouts.shuttle_view'))
+@extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : (Auth::user()->roles_id == 3 ? 'layouts.pariwisata_view' : 'layouts.pariwisata_view' )))
 @section('content')
 <section>
 	<div class="container">
@@ -11,7 +11,11 @@
 		{{-- end heading --}}
 	
 		<div class="panel-body">
-			<a href="{{ URL::to('/laporan_shuttle/cetak_pdf') }}"><button type="button" class="btn btn-success"><i class="fa fa-print"></i> Cetak</button></a><hr>
+			<a href="{{ route('laporan_shuttle.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a>
+
+			<a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
+			<input type="date" id="tgl_awal" name="tgl_awal" class="form-control" value="{{$a}}">
+			<input type="hidden" id="tgl_akhir" name="tgl_akhir" class="form-control" value="{{$b}}" >
         
 			<div class="table-responsive">
 				<table class="table table-bordered">
@@ -31,13 +35,19 @@
 					<tbody>
 						@foreach($order_shuttles as $o => $order_shuttle)
 						<tr>
+							@php
+								setlocale (LC_TIME, 'id_ID');
+								$date = strftime( "%d %B %Y", strtotime($order_shuttle->tgl_berangkat));
+								$date1 = strftime( " %d %B %Y", time());
+								
+							@endphp
 							<td>{{$o+1}}</td>
 							<td>{{$order_shuttle->nama}}</td>
 							<td>{{$order_shuttle->no_identitas}}</td>
 							<td>{{$order_shuttle->alamat}}</td>
 							<td>{{$order_shuttle->jurusan->jurusan}}</td>
-							<td>{{$order_shuttle->tgl_berangkat}}</td>
-							<td>{{$order_shuttle->harga}}</td>
+							<td>{{$date}}</td>
+							<td>{{$order_shuttle->Harga}}</td>
 							<td>{{$order_shuttle->diskon}}</td>
 							<td>{{$order_shuttle->total}}</td>
 
@@ -58,13 +68,9 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-
 $(document).ready(function(){
-
 $("table").DataTable();
-
 });
-
 const destroy = (id)=>{
         swal({
             type:"warning",
@@ -81,7 +87,6 @@ const destroy = (id)=>{
                     _method:"delete",
                     _token:"{{ csrf_token() }}"
                 }
-
                 $.post("order_shuttle/"+id,access)
                 .done(res=>{
                     swal({
