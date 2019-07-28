@@ -22,7 +22,7 @@
     <!-- DATATABLE STYLE  -->
     <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     {{-- full calendar --}}
-    <link rel='stylesheet' href='{{asset('fullcalendar/fullcalendar.css')}}' />
+    <link rel='stylesheet' href="{{asset('fullcalendar/fullcalendar.css')}}" />
 
     <style type="text/css">
         #calendar {
@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="">
 
                     <img src="{{asset('gambar/logo.png')}}" width="120"/>
                 </a>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-danger pull-right" onclick="logout()">LOG ME OUT</a>
+                <a href="#" class="btn btn-danger pull-right" onclick="logout()"><i class="fa fa-sign-out-alt"></i> LOG ME OUT</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -67,29 +67,28 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('schedule')}}"  @yield('schedule-active')>Schedule</a></li>
+                            <li><a href="{{url('schedule')}}"  @yield('schedule-active')><i class="fa fa-calendar-check"></i> Schedule</a></li>
                            
                             <li>
-                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Shuttle <i class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"><i class="fa fa-list-alt "></i> Shuttle <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('order_shuttle')}}">Tiket BUS</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('jurusan')}}" >Jurusan</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('order_shuttle')}}"><i class="fa fa-bus-alt "></i> Tiket BUS</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('jurusan')}}" > <i class="fa fa-map-marker-alt "></i> Jurusan</a></li>
                                      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('kota')}}" >Kota</a></li> -->
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('laporan_shuttle')}}">Data Per Periode</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('laporan_shuttle')}}"> <i class="fa fa-calendar-alt "></i> Data Per Periode</a></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">Pariwisata <i class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> <i class="fa fa-list-alt "></i> Pariwisata <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('orderbus')}}">Sewa Bus Pariwisata</a></li>
-                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('ordertour')}}">Paket Wisata</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('orderbus')}}"><i class="fa fa-bus-alt "></i> Sewa Bus Pariwisata</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('ordertour')}}"><i class="fa fa-ticket-alt "></i> Paket Wisata</a></li>
                                      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Laporan</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="{{url('user')}}" @yield('user-active')>User</a></li>
-                             {{-- <li><a href="table.html">TABLES</a></li> --}}
-                            {{-- <li><a href="blank.html">BLANK PAGE</a></li> --}}
+                            <li><a href="{{url('user')}}" @yield('user-active')><i class="fa fa-user "></i> User</a></li>
+                             
 
                         </ul>
                     </div>
@@ -109,7 +108,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 2019 Diki Darmawan Fitriyadi |<a href="#" target="#"  > Politeknik Negeri Indramayu</a> 
+                    <center>
+                        &copy; 2019 Diki Darmawan Fitriyadi |<a href="#" target="#"  > Politeknik Negeri Indramayu</a>
+                    </center>
+                    
                 </div>
 
             </div>
@@ -173,7 +175,7 @@
             confirmButtonText: "<i class='fa fa-thumbs-up'></i> Yes, Log me out",
             showCancelButton:true,
             cancelButtonColor: '#d33',
-            cancelButtonText: "<i class='fa fa-close'></i> Cancel"
+            cancelButtonText: "<i class='fa fa-window-close'></i> Cancel"
         }).then(res=>{
           if(res.value){
               $("#logout-form").submit();

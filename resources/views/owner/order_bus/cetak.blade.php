@@ -117,7 +117,7 @@
 					</div>
 					<br>
 					{{-- end printthis --}}
-					<button type="submit" class="btn btn-success center-block btn-block" onclick="print_now()" style="border-radius:24px"><i class="fa fa-save"></i> Cetak Tiket</button>
+					<button type="submit" class="btn btn-success center-block btn-block" onclick="print_now()" style="border-radius:24px"><i class="fa fa-print"></i> Cetak </button>
 				</div>
 					
 				{{-- end form --}}

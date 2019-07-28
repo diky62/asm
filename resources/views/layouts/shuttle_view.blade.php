@@ -53,7 +53,7 @@
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-danger pull-right" onclick="logout()">LOG ME OUT</a>
+                <a href="#" class="btn btn-danger pull-right" onclick="logout()"><i class="fa fa-sign-out-alt"></i> LOG ME OUT</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -67,10 +67,10 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('schedule')}}"  @yield('#')>Schedule</a></li>
-                            <li><a href="{{url ('jurusan')}}"  @yield('#')>Jurusan</a></li>
-                            <li><a href="{{url ('order_shuttle')}}"  @yield('#')>Tiket BUS</a></li>
-                            <li><a href="{{url ('laporan_shuttle')}}"  @yield('#')>Data Per Periode</a></li>
+                            <li><a href="{{url('schedule')}}"  @yield('#')><i class="fa fa-calendar-check"></i> Schedule</a></li>
+                            <li><a href="{{url ('jurusan')}}"  @yield('#')><i class="fa fa-map-marker-alt "></i> Jurusan</a></li>
+                            <li><a href="{{url ('order_shuttle')}}"  @yield('#')><i class="fa fa-bus-alt "></i> Tiket BUS</a></li>
+                            <li><a href="{{url ('laporan_shuttle')}}"  @yield('#')><i class="fa fa-calendar-alt "></i> Data Per Periode</a></li>
 
 
                         </ul>
@@ -91,7 +91,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 2019 Diki Darmawan Fitriyadi |<a href="#" target="#"  > Politeknik Negeri Indramayu</a> 
+                    <center>
+                        &copy; 2019 Diki Darmawan Fitriyadi |<a href="#" target="#"  > Politeknik Negeri Indramayu</a>
+                    </center>
+                    
                 </div>
 
             </div>
@@ -151,7 +154,7 @@
             confirmButtonText: "<i class='fa fa-thumbs-up'></i> Yes, Log me out",
             showCancelButton:true,
             cancelButtonColor: '#d33',
-            cancelButtonText: "<i class='fa fa-close'></i> Cancel"
+            cancelButtonText: "<i class='fa fa-window-close'></i> Cancel"
         }).then(res=>{
           if(res.value){
               $("#logout-form").submit();

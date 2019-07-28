@@ -53,7 +53,7 @@
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-danger pull-right" onclick="logout()">LOG ME OUT</a>
+                <a href="#" class="btn btn-danger pull-right" onclick="logout()"><i class="fa fa-sign-out-alt"></i> LOG ME OUT</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -67,12 +67,11 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('schedule')}}"  @yield('#')>Schedule</a></li>
-                            <li><a href="{{url ('orderbus')}}"  @yield('#')>Sewa Bus Pariwisata</a></li>
-                            <li><a href="{{url ('ordertour')}}"  @yield('#')>Paket Wisata</a></li>
+                            <li><a href="{{url('schedule')}}"  @yield('#')><i class="fa fa-calendar-check"></i> Schedule</a></li>
+                            <li><a href="{{url ('orderbus')}}"  @yield('#')><i class="fa fa-bus-alt "></i> Sewa Bus Pariwisata</a></li>
+                            <li><a href="{{url ('ordertour')}}"  @yield('#')><i class="fa fa-ticket-alt "></i> Paket Wisata</a></li>
                             <!-- <li><a href="#"  @yield('#')>Laporan</a></li> -->
-                             {{-- <li><a href="table.html">TABLES</a></li> --}}
-                            {{-- <li><a href="blank.html">BLANK PAGE</a></li> --}}
+                             
 
                         </ul>
                     </div>
@@ -156,7 +155,7 @@
             confirmButtonText: "<i class='fa fa-thumbs-up'></i> Yes, Log me out",
             showCancelButton:true,
             cancelButtonColor: '#d33',
-            cancelButtonText: "<i class='fa fa-close'></i> Cancel"
+            cancelButtonText: "<i class='fa fa-window-close'></i> Cancel"
         }).then(res=>{
           if(res.value){
               $("#logout-form").submit();
