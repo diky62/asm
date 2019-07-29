@@ -91,7 +91,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                   &copy; 2019 Diki Darmawan Fitriyadi |<a href="#" target="#"  > Politeknik Negeri Indramayu</a> 
+                    <center>
+                        &copy; 2019 Diki Darmawan Fitriyadi | Politeknik Negeri Indramayu
+                    </center>
                 </div>
 
             </div>

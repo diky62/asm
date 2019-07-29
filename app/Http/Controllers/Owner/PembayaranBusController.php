@@ -18,7 +18,7 @@ class PembayaranBusController extends Controller
     {
         // $data["pembayaran"] = Pembayaran::with('order_bus')
         // ->where('order_bus_id',$order_bus_id)->get();
-        return view('owner/pembayaran_bus.index');
+        return view('owner/order_bus.pembayaran');
     }
 
     /**

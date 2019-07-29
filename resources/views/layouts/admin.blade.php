@@ -73,8 +73,9 @@
             </div>
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="navbar-collapse collapse ">
 
+                    <div class="navbar-collapse collapse ">
+                        <img src="{{asset ('gambar/logo-panjang.png')}}" width="250" style="padding-top: 5px">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="{{url('awal')}}"  @yield('schedule-active')><i class="fa fa-list-alt "></i> Schedule</a></li>
                             <li><a href="{{url('schedule')}}"  @yield('login-active')><i class="fa fa-sign-in-alt"> </i> Login</a></li>
@@ -100,7 +101,7 @@
             <div class="row">
                 <div class="col-md-12">
                 	<center>
-                		&copy; 2019 Diki Darmawan Fitriyadi |<a href="#" target="#"  > Politeknik Negeri Indramayu</a> 
+                		&copy; 2019 Diki Darmawan Fitriyadi | Politeknik Negeri Indramayu
                 	</center>
                    
                 </div>
