@@ -9,8 +9,8 @@ class OrderBus extends Model
     protected $table = "order_bus";
     protected $guarded = ["id"];
 
-    public function pembayaran_bus(){
-        return $this->belongsTo("App\PembayaranBus");
-    }
+    // public function pembayaran_bus(){
+    //     return $this->belongsTo("App\PembayaranBus");
+    // }
 }
 

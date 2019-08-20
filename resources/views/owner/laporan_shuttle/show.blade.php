@@ -11,11 +11,14 @@
 		{{-- end heading --}}
 	
 		<div class="panel-body">
-			<a href="{{ route('laporan_shuttle.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a>
+			<a href="{{ route('laporan_shuttle.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a> <br>
 
-			<a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
+			Data Periode dari tanggal {{$a}} Sampai Tanggal {{$b}}
+			<hr>
+
+			<!-- <a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
 			<input type="date" id="tgl_awal" name="tgl_awal" class="form-control" value="{{$a}}">
-			<input type="hidden" id="tgl_akhir" name="tgl_akhir" class="form-control" value="{{$b}}" >
+			<input type="hidden" id="tgl_akhir" name="tgl_akhir" class="form-control" value="{{$b}}" > -->
         
 			<div class="table-responsive">
 				<table class="table table-bordered">

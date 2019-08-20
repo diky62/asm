@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <a href="{{route('user.index')}}" type="button" class="btn btn-success"><i class="fa fa-arrow-left"></i> Kembali</a><hr>
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
+                    <div class="panel-heading">Edit User</div>
                     <div class="panel-body">
                         <form action="{{ route('user.update', $users->id) }}" class="form-horizontal" method="post">
                             @method('put')

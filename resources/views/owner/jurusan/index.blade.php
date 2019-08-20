@@ -20,7 +20,7 @@
 	        </form>
         <hr>
         
-        	<center><h3>Kota</h3></center>
+        	<center><h3>Jurusan</h3></center>
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead>

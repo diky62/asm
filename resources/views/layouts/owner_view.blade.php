@@ -68,6 +68,7 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="{{url('schedule')}}"  @yield('schedule-active')><i class="fa fa-calendar-check"></i> Schedule</a></li>
+                            
                            
                             <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"><i class="fa fa-list-alt "></i> Shuttle <i class="fa fa-angle-down"></i></a>

@@ -33,6 +33,9 @@
                             </div>
                         </div>
                     <button type="submit" name="go" class="btn btn-block btn-success">Sign in</button>
+                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                                </a>
                     
                 </form>
             </section>
