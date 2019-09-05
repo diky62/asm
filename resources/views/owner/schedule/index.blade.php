@@ -53,12 +53,13 @@
     const data=[];
     const order_bus = {!! $order_bus !!};
     const order_tour = {!! $order_tour !!};
+    
 
     console.log(order_bus,order_tour);
 
     $.each(order_bus,(key,i)=>{
         data.push({
-            title:'Sewa Bus '+i.tujuan,
+            title:'Sewa Bus '+i.tujuan+' '+i.kode_bodi +' '+i.plat_nomor,
             start:i.tgl_berangkat,
             end:i.tgl_kembali,
             id:'i'+i.id,
@@ -70,7 +71,7 @@
             tujuan:i.tujuan,
             lokasi:i.keterangan_lokasi,
             jumlah:i.jumlah,
-            keterangan:i.keterangan,
+            keterangan:i.keterangan+' '+i.kode_bodi +' '+i.plat_nomor,
 
         });
     });
@@ -95,6 +96,8 @@
 
         });
     });
+
+    
 
     // $.each(acaras,(index,a)=>{
     //     data.push({

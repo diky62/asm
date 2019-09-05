@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\OrderBus;
 use App\OrderTour;
+use App\OrderShuttle;
+
 
 class ScheduleController extends Controller
 {
@@ -18,6 +20,8 @@ class ScheduleController extends Controller
     {
         $data['order_bus'] = OrderBus::get();
         $data['order_tour'] = OrderTour::get();
+        $data['order_shuttle'] = OrderShuttle::with('jurusan')->distinct('tgl_berangkat')->get();
+        // $c = OrderBus
         // dd($data);
         return view('owner/schedule.index',$data);
     }

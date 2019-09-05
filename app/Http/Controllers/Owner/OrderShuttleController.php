@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\OrderShuttle;
 use App\Jurusan;
 
@@ -18,7 +20,22 @@ class OrderShuttleController extends Controller
     {
         $data['order_shuttles']=OrderShuttle::with('jurusan')->orderBy('created_at','desc')->get();
         // dd($data);
-        return view('owner/order_shuttle.index',$data);
+        
+        $a = OrderShuttle::count();
+        $c["nilai"] = OrderShuttle::get();
+        foreach ($c['nilai'] as $c => $nilai) {
+            $nilai->sum_nilai = $nilai->sum('total');
+        }
+        $total = $nilai->sum_nilai;
+       
+
+        // $z = OrderShuttle::whereMonth($month);
+        // dd($month);
+        // $jumlah_pesanan = OrderShuttle::get();
+        // dd($jumlah_pesanan);
+
+        // 
+        return view('owner/order_shuttle.index',$data, ['a' => $a, 'total' => $total]);
     }
 
     /**
@@ -90,10 +107,12 @@ class OrderShuttleController extends Controller
         //
         $data['order_shuttle'] = OrderShuttle::find($id);
         $data['jurusans'] = Jurusan::get();
+        $name['user'] = User::find(Auth::user()->id);
         
         // dd($data['user']);
+        // dd($name);
         // return view('owner/user.edit',$data);
-        return view('owner/order_shuttle.cetak',$data);
+        return view('owner/order_shuttle.cetak',$data,$name);
     }
 
     /**

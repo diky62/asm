@@ -2,7 +2,71 @@
 @section('content')
 <section>
 	<div class="container">
-		<hr>
+		
+		<a href="{{ route('laporan_shuttle.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a> <br>
+
+						<?php  
+						setlocale (LC_TIME, 'id_ID');
+						$date_awal = strftime( " %d %B %Y", strtotime($a));
+						$date_akhir = strftime( " %d %B %Y", strtotime($b));
+						?>
+					<h4>
+			Data Periode dari tanggal {{$date_awal}} Sampai {{$date_akhir}}
+			</h4>
+			<div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <div class="row">
+                        <div class="col-xs-9">
+                          <div class="huge">
+                            {{$jumlah_pesanan}}
+                          </div>
+                          <div>
+                           Jumlah Pesanan
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right">
+                          <i class="fa fa-bus-alt fa-5x"></i>
+                        </div>
+                      </div>
+                    </div><a href="#">
+                    <div class="panel-footer">
+                     
+                      <div class="clearfix"></div>
+                    </div></a>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="panel panel-green panel-primary">
+                    <div class="panel-heading">
+                      <div class="row">
+                        <div class="col-xs-9">
+                          <div class="huge">
+                            {{number_format($total,0,".",".")}}
+                          </div>
+                          <div>
+                            Pendapatan
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right">
+                        	<i class="fa fa-money-bill-alt fa-5x"></i>
+                        </div>
+                      </div>
+                    </div><a href="#">
+                    <div class="panel-footer">
+                      
+                      <div class="clearfix"></div>
+                    </div></a>
+                  </div>
+                </div>
+            </div>          
+        </div>
+    </div>
+    <hr> 
 
 		<div class="panel panel-default">
 		<div class="panel-heading">
@@ -11,10 +75,8 @@
 		{{-- end heading --}}
 	
 		<div class="panel-body">
-			<a href="{{ route('laporan_shuttle.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a> <br>
 
-			Data Periode dari tanggal {{$a}} Sampai Tanggal {{$b}}
-			<hr>
+
 
 			<!-- <a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
 			<input type="date" id="tgl_awal" name="tgl_awal" class="form-control" value="{{$a}}">

@@ -58,7 +58,7 @@
 										@endphp
 										<tr>
 											<td width="10"></td>
-											<td> Untuk Pembayaran </td> <td width="10"> : </td><td> Biaya sewa bus pariwisata sebanyak {{$order_bus->jumlah}} unit, yang akan diberangkatkan pada tanggal {{$date}} jam {{$order_bus->waktu_keberangkatan}} dari {{$order_bus->penjemputan}} dengan tujuan {{$order_bus->tujuan}} </td>
+											<td> Untuk Pembayaran </td> <td width="10"> : </td><td> Biaya sewa bus pariwisata sebanyak {{$order_bus->jumlah}} unit {{$order_bus->kode_bodi}} dengan nomor polisi {{$order_bus->plat_nomor}}, yang akan diberangkatkan pada tanggal {{$date}} jam {{$order_bus->waktu_keberangkatan}} dari {{$order_bus->penjemputan}} dengan tujuan {{$order_bus->tujuan}} </td>
 										</tr>
 									
 									</table>
@@ -101,7 +101,7 @@
 													<h5>Hormat Kami</h5>
 													<br>
 													
-													<h5>( Fitra Autotrans )</h5>
+													<h5>( {{$user->name}} )</h5>
 												</center>
 											</td>
 

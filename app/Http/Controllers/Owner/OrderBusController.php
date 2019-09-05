@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\OrderBus;
 use App\PembayaranBus;
 
@@ -78,9 +80,10 @@ class OrderBusController extends Controller
     {
         //
         $data['order_bus'] = OrderBus::find($id);
+        $name['user'] = User::find(Auth::user()->id);
         
         // dd($data['user']);
-        return view('owner/order_bus.cetak',$data);
+        return view('owner/order_bus.cetak',$data,$name);
     }
 
     public function pembayaran()

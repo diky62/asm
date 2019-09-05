@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('home_user');
 });
 
-Route::get('/awal', 'DashboardController@index')->name('awal');
+Route::get('/schedule_luar', 'DashboardController@index')->name('schedule_luar');
+Route::get('/home_user', 'HomeUserController@index')->name('home_user');
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 // Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');

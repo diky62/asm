@@ -121,7 +121,7 @@
 												<h5>Hormat Kami</h5>
 												<br>
 												
-												<h5>( Fitra Autotrans ) </h5>
+												<h5>( {{$user->name}} ) </h5>
 											</center>
 										</td>
 

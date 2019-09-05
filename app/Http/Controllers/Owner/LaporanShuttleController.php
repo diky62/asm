@@ -51,9 +51,14 @@ class LaporanShuttleController extends Controller
         $a = $request['tgl_awal'];
         $b = $request['tgl_akhir'];
         // dd($b);
-          $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();
-         // dd($data);
-         return view('owner/laporan_shuttle.show', $data, ['a' => $a, 'b'=>$b]);
+        $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();
+        $jumlah_pesanan = OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->count();
+         // dd($jumlah_pesanan);
+        foreach ($data['order_shuttles'] as $c => $nilai) {
+            $nilai->sum_nilai = $nilai->sum('total');
+        }
+        $total = $nilai->sum_nilai;
+         return view('owner/laporan_shuttle.show', $data, ['a' => $a, 'b'=>$b, 'total'=>$total, 'jumlah_pesanan'=>$jumlah_pesanan]);
     }
 
     /**

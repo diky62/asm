@@ -77,7 +77,8 @@
                     <div class="navbar-collapse collapse ">
                         <img src="{{asset ('gambar/logo-panjang.png')}}" width="250" style="padding-top: 5px">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="{{url('awal')}}"  @yield('schedule-active')><i class="fa fa-list-alt "></i> Schedule</a></li>
+                            <li><a href="{{url('home_user')}}"  @yield('schedule-active')><i class="fa fa-list-alt "></i> Home</a></li>
+                            <li><a href="{{url('schedule_luar')}}"  @yield('schedule-active')><i class="fa fa-list-alt "></i> Schedule</a></li>
                             <li><a href="{{url('schedule')}}"  @yield('login-active')><i class="fa fa-sign-in-alt"> </i> Login</a></li>
                            
                             

@@ -28,6 +28,8 @@
 							<th>Tanggal Kembali</th>
 							<th>Jumlah Bus</th>
 							<th>Keterangan</th>
+							<th>Kode Bodi</th>
+							<th>No Polisi</th>
 							<th>Harga</th>
 							<th>Total</th>
 							<th>Action</th>
@@ -47,6 +49,8 @@
 							<td>{{$orderbus->tgl_kembali}}</td>
 							<td>{{$orderbus->jumlah}}</td>
 							<td>{{$orderbus->keterangan}}</td>
+							<td>{{$orderbus->kode_bodi}}</td>
+							<td>{{$orderbus->plat_nomor}}</td>
 							<td>{{$orderbus->harga}}</td>
 							<td>{{$orderbus->total}}</td>
 							<td>

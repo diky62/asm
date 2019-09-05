@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\OrderTour;
 
 class OrderTourController extends Controller
@@ -78,8 +80,9 @@ class OrderTourController extends Controller
     {
         //
         $data['order_tour'] = OrderTour::find($id);
+        $name['user'] = User::find(Auth::user()->id);
         
-        return view('owner/order_tour.cetak',$data);
+        return view('owner/order_tour.cetak',$data,$name);
     }
     /**
      * Update the specified resource in storage.

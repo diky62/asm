@@ -18,7 +18,9 @@
 									<h4><span class="label label-default">Nama Pemesan: </span></h4>
 									<input type="text" required name="nama_pemesan" class="form-control" placeholder="Nama Pemesan" onkeyup="this.value = this.value.toUpperCase()">
 								</div>
-								
+								<div class="form-group">
+									<h4><span class="label label-default">No Hp : </span></h4>
+									<input type="text" required name="no_hp" class="form-control" placeholder="No_hp" onkeypress="return hanyaAngka(event)">
 								<div class="form-group">
 									<h4><span class="label label-default">Tujuan : </span></h4>
 									<input type="text" required name="tujuan" class="form-control" placeholder="Tujuan">
@@ -50,6 +52,15 @@
 								<div class="form-group">
 									<h4><span class="label label-default">Keterangan: </span></h4>
 									<input type="textarea" required name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan">
+								</div>
+
+								<div class="form-group">
+									<h4><span class="label label-default">Kode Bodi: </span></h4>
+									<input type="textarea" required name="kode_bodi" class="form-control" placeholder="Kode Bodi">
+								</div>
+								<div class="form-group">
+									<h4><span class="label label-default">No Polisi: </span></h4>
+									<input type="textarea" required name="plat_nomor"  class="form-control" placeholder="No Polisi">
 								</div>
 
 								<div class="form-group">

@@ -5,11 +5,71 @@
 		<a href="{{ route('order_shuttle.create') }}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i> Tambah Pesanan</button></a>
 		<a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
 
+
+
+<!-- <div class="row">
+            <div class="col-lg-8 col-sm-12">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <div class="row">
+                        <div class="col-xs-9">
+                          <div class="huge">
+                            {{$a}}
+                          </div>
+                          <div>
+                            Pesanan
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right">
+                          <i class="fa fa-cogs fa-5x"></i>
+                        </div>
+                      </div>
+                    </div><a href="#">
+                    <div class="panel-footer">
+                     
+                      <div class="clearfix"></div>
+                    </div></a>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <div class="row">
+                        <div class="col-xs-9">
+                          <div class="huge">
+                            {{number_format($total,0,".",".")}}
+                          </div>
+                          <div>
+                            Pendapatan
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right">
+                          <i class="fa fa-cogs fa-5x"></i>
+                        </div>
+                      </div>
+                    </div><a href="#">
+                    <div class="panel-footer">
+                      
+                      <div class="clearfix"></div>
+                    </div></a>
+                  </div>
+                </div>
+            </div>          
+        </div>
+    </div>
+ -->
+ 
+
 		<div class="panel panel-default">
 		<div class="panel-heading">
-			Form Order Shuttle
+			Form Order Shuttle 
 		</div>
 		{{-- end heading --}}
+
+
 	
 		<div class="panel-body">
         
