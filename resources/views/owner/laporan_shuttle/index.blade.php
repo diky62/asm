@@ -13,13 +13,13 @@
             @csrf
 		      <div class="row form-group">
 		         <div class="col col-md-2"><label for="text-input" class="form-control-label">Dari Tanggal</label></div>
-		          <div class="col-12 col-md-9">
+		          <div class="col-12 col-md-10">
 		            <input type="date" id="tgl_pinjam" name="tgl_awal" class="form-control">
 		          </div>
 		      </div>
 		      <div class="row form-group">
 		        <div class="col col-md-2"><label for="text-input" class="form-control-label">Sampai Tanggal</label></div>
-		          <div class="col-12 col-md-9"><input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control"></div>
+		          <div class="col-12 col-md-10"><input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control"></div>
 		      </div>
 		   
 		       <button type="submit" class="btn btn-info center-block btn-block"><i class="fa fa-zoom"></i> Cari</button> 

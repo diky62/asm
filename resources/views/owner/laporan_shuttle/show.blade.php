@@ -78,9 +78,14 @@
 
 
 
-			<!-- <a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr>
-			<input type="date" id="tgl_awal" name="tgl_awal" class="form-control" value="{{$a}}">
-			<input type="hidden" id="tgl_akhir" name="tgl_akhir" class="form-control" value="{{$b}}" > -->
+			{{-- <a href="{{ route('laporan_shuttle.pdf') }}"><button type="button" class="btn btn-warning"><i class="fa fa-print"></i> Download PDF</button></a><hr> --}}
+      <form method='post' action="{{ route('laporan_shuttle.pdf') }}">
+            @csrf
+  			<input type="date" id="tgl_awal" name="tgl_awal" class="form-control" value="{{$a}}">
+  			<input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control" value="{{$b}}" >
+
+      <input type="submit" name="cetak_pdf" class="btn btn-primary btn-sm" value="Cetak" >
+      </form>
         
 			<div class="table-responsive">
 				<table class="table table-bordered">

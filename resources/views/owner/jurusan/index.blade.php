@@ -1,7 +1,42 @@
 @extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : (Auth::user()->roles_id == 3 ? 'layouts.pariwisata_view' : 'layouts.pariwisata_view' )))
 @section('content')
 <section>
+
 	<div class="container">
+		@if ($message = Session::get('success'))
+	      <div class="alert alert-success alert-block">
+	        <button type="button" class="close" data-dismiss="alert">×</button> 
+	          <strong>{{ $message }}</strong>
+	      </div>
+	    @endif
+
+	    @if ($message = Session::get('error'))
+	      <div class="alert alert-danger alert-block">
+	        <button type="button" class="close" data-dismiss="alert">×</button> 
+	        <strong>{{ $message }}</strong>
+	      </div>
+	    @endif
+
+	    @if ($message = Session::get('warning'))
+	      <div class="alert alert-warning alert-block">
+	        <button type="button" class="close" data-dismiss="alert">×</button> 
+	        <strong>{{ $message }}</strong>
+	    </div>
+	    @endif
+
+	    @if ($message = Session::get('info'))
+	      <div class="alert alert-info alert-block">
+	        <button type="button" class="close" data-dismiss="alert">×</button> 
+	        <strong>{{ $message }}</strong>
+	      </div>
+	    @endif
+
+	    @if ($errors->any())
+	      <div class="alert alert-danger">
+	        <button type="button" class="close" data-dismiss="alert">×</button> 
+	        Please check the form below for errors
+	    </div>
+	    @endif
 		<div class="panel panel-default">
 		<div class="panel-heading">
 			Form Jurusan
@@ -13,8 +48,12 @@
 	                        {{ csrf_field() }}
 
 				<div class="form-group">
-					            <span class="label label-default">Jurusan </span>
+					<span class="label label-default">Jurusan </span>
 		            <input type="text" name="jurusan" id="jurusan" class="form-control" onkeyup="myFunction()">
+		        </div>
+		        <div class="form-group">
+					<span class="label label-default">Harga </span>
+		            <input type="number" name="harga" id="harga" class="form-control" onkeypress="return hanyaAngka(event)">
 		        </div>
 		        <button type="submit" class="btn btn-success center-block btn-block"><i class="fa fa-save "></i>  Submit</button>
 	        </form>
@@ -27,6 +66,7 @@
 						<tr>
 							<th>No.</th>
 							<th>Jurusan</th>
+							<th>Harga</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -35,6 +75,7 @@
 						<tr>
 							<td>{{$a+1}}</td>
 							<td>{{$jurusan->jurusan}}</td>
+							<td>{{ number_format($jurusan->harga,0,".",".") }}</td>
 							<td>
 								<button type="button" class="btn btn-danger" onclick="destroy({{$jurusan->id}})"><i class="fa fa-trash"></i> Delete</button>
 
@@ -85,7 +126,7 @@ const destroy = (id)=>{
                     _token:"{{ csrf_token() }}"
                 }
 
-                $.post("asal_tujuan/"+id,access)
+                $.post("jurusan/"+id,access)
                 .done(res=>{
                     swal({
                         title:"Ok!",

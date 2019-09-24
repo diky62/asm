@@ -13,19 +13,20 @@ class JurusanSeeder extends Seeder
     {
         DB::table('jurusan')->insert([
           	'jurusan' => 'Kuningan - Palembang'
+            'harga' => '300000'
           	
       ]);
         DB::table('jurusan')->insert([
           	'jurusan' => 'Kuningan - Jambi'
-            
+            'harga' => '350000'
       ]);
         DB::table('jurusan')->insert([
           	'jurusan' => 'Cirebon - Palembang'
-            
+            'harga' => '300000'
       ]);
         DB::table('jurusan')->insert([
           	'jurusan' => 'Cirebon - Jambi'
-            
+            'harga' => '350000'
       ]);
     }
 }

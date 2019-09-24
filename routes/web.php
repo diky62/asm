@@ -68,6 +68,8 @@ Route::group(['middleware'=>'auth'],function(){
     "orderbus"=>"Owner\OrderBusController",
     "ordertour"=>"Owner\OrderTourController",
     "laporan_shuttle"=>"Owner\LaporanShuttleController",
+    "harga_bus"=>"Owner\DataHargaController",
+    "petugas"=>"Owner\UserController",
 
     ]);
     Route::get('/ordertour/cetak/{id}','Owner\OrderTourController@cetak')->name('ordertour.cetak');
@@ -77,6 +79,7 @@ Route::group(['middleware'=>'auth'],function(){
     // Route::get('/laporan_shuttle/cetak_pdf', 'Owner\LaporanShuttleController@cetak_pdf')->name('laporan_shuttle.cetak_pdf');
     Route::get('orderbus/pembayaran','Owner\OrderBusController@pembayaran')->name('orderbus.pembayaran');
     Route::get('laporan-pdf','Owner\LaporanShuttleController@pdf')->name('laporan_shuttle.pdf');
+    Route::post('laporan-pdf','Owner\LaporanShuttleController@pdf')->name('laporan_shuttle.pdf');
     Route::get('orderbus_pdf','Owner\OrderBusController@pdf')->name('orderbus.pdf');
     Route::get('ordertour_pdf','Owner\OrderTourController@pdf')->name('ordertour.pdf');
 

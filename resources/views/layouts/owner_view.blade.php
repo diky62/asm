@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{url('schedule')}}">
 
                     <img src="{{asset('gambar/logo.png')}}" width="120"/>
                 </a>
@@ -85,10 +85,11 @@
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('orderbus')}}"><i class="fa fa-bus-alt "></i> Sewa Bus Pariwisata</a></li>
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('ordertour')}}"><i class="fa fa-ticket-alt "></i> Paket Wisata</a></li>
+                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url ('harga_bus')}}"><i class="fa fa-money-bill-alt "></i> Data Harga Bus Pariwisata</a></li>
                                      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Laporan</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="{{url('user')}}" @yield('user-active')><i class="fa fa-user "></i> User</a></li>
+                            <li><a href="{{url('petugas')}}" @yield('user-active')><i class="fa fa-user "></i> User</a></li>
                              
 
                         </ul>

@@ -97,14 +97,14 @@ class LaporanShuttleController extends Controller
 
     function pdf(Request $request)
     {
-        // $a = $request['tgl_awal'];
-        // $b = $request['tgl_akhir'];
+        $a = $request['tgl_awal'];
+        $b = $request['tgl_akhir'];
         
-        // dd($awal);
-        // $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();    
-        $data['order_shuttles']=OrderShuttle::get();
+        // dd($b);
+        $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();    
+        // $data['order_shuttles']=OrderShuttle::get();
           // dd($data);
-        $pdf = \PDF::loadView('pdf', $data);
+        $pdf = \PDF::loadView('pdf', $data, ['a' => $a, 'b'=>$b]);
         $pdf->setPaper('A4', 'portrait');
         return $pdf->download('laporan_shuttle.pdf');   
     }

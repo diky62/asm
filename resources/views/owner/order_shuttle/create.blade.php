@@ -1,6 +1,14 @@
 @extends(Auth::user()->roles_id == 1 ? 'layouts.owner_view' : (Auth::user()->roles_id == 2 ? 'layouts.shuttle_view' : (Auth::user()->roles_id == 3 ? 'layouts.pariwisata_view' : 'layouts.pariwisata_view' )))
 @section('content')
 <section>
+	{{-- @php
+	 	$result = mysql_query("select * from jurusan");   
+    	$jsArray = "var dtMhs = new Array();\n";       
+    	while ($row = mysql_fetch_array($result)) {   
+        	echo '<option value="' . $row['jurusan'] . '">' . $row['jurusan'] . '</option>';   
+        	$jsArray .= "dtMhs['" . $row['jurusan'] . "'] = {harga:'" . addslashes($row['harga']) . "'};\n";   
+    	}      
+	@endphp --}}
 	<div class="container-fluid">
 
 	<a href="{{ route('order_shuttle.index') }}"><button type="button" class="btn btn-success" name="button"><i class="fa fa-arrow-left"></i> Back</button></a><hr>
@@ -27,10 +35,13 @@
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Asal Tujuan: </span></h4>
-									<select class="form-control" name="jurusan">
+									<select class="form-control" name="jurusan" id="jurusan">
+									<option disabled selected>-- Pilih Jurusan --</option>
                                     @foreach($jurusans as $jurusan)
-									<option value="{{ $jurusan->id }}">{{ $jurusan->jurusan }}</option>
+									<option harga="{{ $jurusan->harga }}" value="{{ $jurusan->id }}" >{{ $jurusan->jurusan }}</option>
+
 									@endforeach 
+
                                 </select>
 								</div>
 								{{-- <div class="form-group">
@@ -47,7 +58,7 @@
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Harga: </span></h4>
-									<input type="text" required name="harga" id="harga" class="form-control" placeholder="Harga" onkeypress="return hanyaAngka(event)">
+									<input type="text" required name="harga" id="harga" class="form-control"  value="" placeholder="Harga" onkeypress="return hanyaAngka(event)">
 								</div>
 								<div class="form-group">
 									<h4><span class="label label-default">Diskon (%) : </span></h4>
@@ -84,5 +95,17 @@
 	        $("#total").val(total);
 	      });
 	    });
-  	</script>
+
+	    $('#jurusan').on('change',function(){
+	    	  // var harga = $(“#jurusan option:selected”).attr(lama);
+		   // var harga = parseInt($("#jurusan").val());
+		   var harga = $('#jurusan option:selected').attr('harga');
+		    $('#harga').val(harga);
+		});
+
+	    
+		
+
+   </script>
+
 @endsection

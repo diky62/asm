@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\OrderBus;
 use App\PembayaranBus;
@@ -42,11 +43,24 @@ class OrderBusController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $orderbus = new OrderBus;
-        $orderbus->fill($request->All());
-        $orderbus->Save();   
+        $a = $request['tgl_berangkat'];
+        // dd($a);
+        $b = $request['tgl_kembali'];
+        // $validator = Validator::make(request()->all(),[
+            
+        //     'tgl_berangkat'=> 'required',
+        //     ]);
+        if ($b<$a) {
+            return redirect('orderbus/create')->with(['error' => 'Tanggal Pinjam Tidak Boleh Melebihi Tanggal Kembali !']);
+        }
+        else{
+            $orderbus = new OrderBus;
+            $orderbus->fill($request->All());
+            $orderbus->Save();   
 
-         return redirect('orderbus');
+             return redirect('orderbus')->with(['success' => 'Data Berhasil Disimpan']);
+        }
+        
 
     }
 

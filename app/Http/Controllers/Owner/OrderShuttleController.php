@@ -46,6 +46,7 @@ class OrderShuttleController extends Controller
     public function create()
     {
          $data['jurusans']=Jurusan::get();
+         
         // dd($data);
         return view('owner/order_shuttle.create',$data);
     }
@@ -71,7 +72,7 @@ class OrderShuttleController extends Controller
 
         ]);
 
-        return redirect()-> route('order_shuttle.index')->with(['success' => 'Data Berhasil Ditambahkan!']);
+        return redirect()-> route('order_shuttle.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     /**

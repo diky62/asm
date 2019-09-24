@@ -48,9 +48,9 @@
                                 
                                 <div class="form-group">
 									<h4><span class="label label-default">Jurusan : </span></h4>
-									<select id="roles_id" class="form-control" name="jurusan_id">
+									<select id="jurusan_id" class="form-control" name="jurusan_id">
                                     @foreach($jurusans as $role)
-                                    <option value="{{ $role->id }}">{{ $role->jurusan }}</option>
+                                    <option harga="{{ $role->harga }}" value="{{ $role->id }}">{{ $role->jurusan }}</option>
                                     @endforeach
                                     </select>
 								</div>
@@ -100,6 +100,13 @@
 	      });
 
 	    });
+
+	    $('#jurusan_id').on('change',function(){
+	    	  // var harga = $(“#jurusan option:selected”).attr(lama);
+		   // var harga = parseInt($("#jurusan").val());
+		   var harga = $('#jurusan_id option:selected').attr('harga');
+		    $('#harga').val(harga);
+		});
 
 
 

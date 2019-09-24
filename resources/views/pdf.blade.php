@@ -6,15 +6,24 @@
     <title>Laporan Penjualan Tiket Bus</title>
 </head>
 <body>
+    @php
+        setlocale (LC_TIME, 'id_ID');
+        $tgl_a = strftime( "%d %B %Y", strtotime($a));
+        $tgl_b = strftime( "%d %B %Y", strtotime($b));
+        $date1 = strftime( " %d %B %Y", time());
+        
+    @endphp
     <center>
         <img src="{{asset('gambar/kop.png')}}" width="700"/>
         <img src="{{asset('gambar/garis.png')}}" width="700"/>
 
-        <h2>Laporan Penjualan Tiket Bus</h2>
-        <h2>PT. Angga Saputra Mandiri</h2>
+        <h2>Laporan Penjualan Tiket Bus
+            <br>
+        PT. Angga Saputra Mandiri</h2>
+        Periode {{$tgl_a}} sampai dengan {{$tgl_b}}
 
     </center>
-    <br>
+    <hr>
 <table border="1" style="width:100%">
     <thead>
                         <tr>

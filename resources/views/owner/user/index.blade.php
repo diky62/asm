@@ -2,7 +2,7 @@
 @section('content')
 <section>
 	<div class="container">
-		<a href="{{route('user.create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Tambah User</button></a><hr>
+		<a href="{{route('petugas.create')}}"><button type="button" class="btn btn-success"><i class="fa fa-pencil-alt "></i> Tambah User</button></a><hr>
 
 		<div class="panel panel-default">
 		<div class="panel-heading">
@@ -36,7 +36,7 @@
 							<td>{{$user->email}}</td>
 							<td>
 								<button type="button" class="btn btn-danger" onclick="destroy({{$user->id}})"><i class="fa fa-trash-o"></i>DELETE</button>
-								<a href="{{route('user.edit', $user->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
+								<a href="{{route('petugas.edit', $user->id)}}" type="button" class="btn btn-warning"><i class="fa fa-edit"></i>EDIT</a>
 							</td> 
 						</tr>
 						@endforeach
@@ -65,8 +65,8 @@ $("table").DataTable();
 const destroy = (id)=>{
         swal({
             type:"warning",
-            title:"Apakah anda yakin akan menghapus user ?",
-            text:"",
+            title:"Apakah anda yakin ?",
+            text:"Dengan menghapus salah satu data di tabel asal atau tujuan secara otomatis data di tabel asal dan tujuan akan terhapus",
             showCancelButton:true,
             cancelButtonColor:"#d33",
             confirmButtonText:"Ya",
@@ -79,14 +79,14 @@ const destroy = (id)=>{
                     _token:"{{ csrf_token() }}"
                 }
 
-                $.post("user/"+id,access)
+                $.post("{{ url('petugas') }}/"+id,access)
                 .done(res=>{
                     swal({
                         title:"Ok!",
                         text:"Data berhasil dihaps!",
                         type:"success"
                     }).then(result=>{
-                        window.location.reload();
+                        window.location = "{{ url('petugas') }}";
                     });
                 })
                 .fail(err=>{

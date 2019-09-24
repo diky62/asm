@@ -39,9 +39,10 @@ class JurusanController extends Controller
     {
         $jurusan = new Jurusan;
         $jurusan->jurusan = $request->input('jurusan');
+        $jurusan->harga = $request->input('harga');
 
         $jurusan->save();
-        return redirect()-> route('jurusan.index');
+        return redirect()-> route('jurusan.index')->with(['success' => 'Data Berhasil Disimpan']) ;
     }
 
     /**
@@ -86,6 +87,7 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $data = Jurusan::find($id)->delete();
+        return response()->json($data);
     }
 }

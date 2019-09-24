@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\OrderTour;
+use App\HargaBus;
 
-class OrderTourController extends Controller
+class DataHargaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,9 @@ class OrderTourController extends Controller
      */
     public function index()
     {
-        //
-        $data['order_tour'] = OrderTour::get();
-        return view('owner/order_tour.index', $data);
+        $data['harga_bus']=HargaBus::get();
+        // dd($data);
+        return view('owner/harga_bus.index',$data);
     }
 
     /**
@@ -29,9 +27,7 @@ class OrderTourController extends Controller
      */
     public function create()
     {
-        //
-        $data = OrderTour::get();
-        return view('owner/order_tour.create', $data);
+        return view('owner/harga_bus.create');
     }
 
     /**
@@ -42,13 +38,11 @@ class OrderTourController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd($request);
-        $ordertour = new OrderTour;
-        $ordertour->fill($request->All());
-        $ordertour->Save();   
+        $harga_bus = new HargaBus;
+        $harga_bus->fill($request->All());
+        $harga_bus->Save();   
 
-         return redirect('ordertour')->with(['success' => 'Data Berhasil Disimpan']);
+         return redirect('harga_bus')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     /**
@@ -70,20 +64,12 @@ class OrderTourController extends Controller
      */
     public function edit($id)
     {
-        //
-        $data['order_tour'] = OrderTour::find($id);
+         $data['harga_bus'] = HargaBus::find($id);
         
-        return view('owner/order_tour.edit',$data);
+        // dd($data['user']);
+        return view('owner/harga_bus.edit',$data);
     }
 
-    public function cetak($id)
-    {
-        //
-        $data['order_tour'] = OrderTour::find($id);
-        $name['user'] = User::find(Auth::user()->id);
-        
-        return view('owner/order_tour.cetak',$data,$name);
-    }
     /**
      * Update the specified resource in storage.
      *
@@ -93,12 +79,11 @@ class OrderTourController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $user = OrderTour::find($id);
+        $user = HargaBus::find($id);
         $user->fill($request->all());
         $user->update();
 
-       return redirect('ordertour');
+       return redirect('harga_bus');
     }
 
     /**
@@ -109,22 +94,7 @@ class OrderTourController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $data = OrderTour::find($id)->delete();
+        $data = HargaBus::find($id)->delete();
         return response()->json($data);
-    }
-
-    function pdf()
-    {
-        // $a = $request['tgl_awal'];
-        // $b = $request['tgl_akhir'];
-        
-        // dd($awal);
-        // $data['order_shuttles']=OrderShuttle::whereBetween('tgl_berangkat',[$a, $b])->get();    
-         $data['order_tour'] = OrderTour::get();
-          // dd($data);
-        $pdf = \PDF::loadView('tour-pdf', $data);
-        $pdf->setPaper('A4', 'landscape');
-        return $pdf->download('laporan_tour.pdf');   
     }
 }

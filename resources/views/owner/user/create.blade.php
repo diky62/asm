@@ -4,11 +4,11 @@
 	<div class="container">
 		<div class="row">
         <div class="col-md-8 col-md-offset-2">
-        	<a href="{{route('user.index')}}" type="button" class="btn btn-success"><i class="fa fa-arrow-left"></i> Kembali</a><hr>
+        	<a href="{{route('petugas.index')}}" type="button" class="btn btn-success"><i class="fa fa-arrow-left"></i> Kembali</a><hr>
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{route('user.store')}}">
+                    <form class="form-horizontal" method="POST" action="{{route('petugas.store')}}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
